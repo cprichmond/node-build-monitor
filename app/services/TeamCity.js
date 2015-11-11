@@ -1,7 +1,7 @@
 var request = require('request'),
     async = require('async'),
     moment = require('moment'),
-    TEAMCITY_DATE_FORMAT = 'YYYYMMDDTHHmmss+Z';
+    TEAMCITY_DATE_FORMAT = 'YYYYMMDDTHHmmss';
 
 module.exports = function () {
     var self = this,
@@ -60,7 +60,7 @@ module.exports = function () {
             });
         },
         parseStartDate = function (build) {
-            return moment(build.startDate, 'YYYYMMDDTHHmmss+Z').toDate();
+            return moment(build.startDate, TEAMCITY_DATE_FORMAT).toDate();
         },
         parseFinishDate = function (build) {
             if (build.finishDate) {
